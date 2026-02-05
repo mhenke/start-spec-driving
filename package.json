@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@start-spec-driving/env": "workspace:*",
+    "alchemy": "^0.83.3",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
