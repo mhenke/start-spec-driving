@@ -12,7 +12,7 @@
 {
   "$schema": "https://r2.better-t-stack.dev/schema.json",
   "version": "3.19.4",
-  "createdAt": "2026-02-05T15:01:11.036Z",
+  "createdAt": "2026-02-05T15:11:05.272Z",
   "reproducibleCommand": "bun create better-t-stack@latest start-spec-driving --frontend tanstack-start --backend self --runtime none --database postgres --orm drizzle --api trpc --auth better-auth --payments none --addons none --examples none --db-setup supabase --web-deploy cloudflare --server-deploy none --git --package-manager bun --install",
   "database": "postgres",
   "orm": "drizzle",
