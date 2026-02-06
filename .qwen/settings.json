@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-23f1667f-32f1-430e-867f-36210f724e65"
+      ]
+    },
+    "faker": {
+      "command": "node",
+      "args": [
+        "/home/mhenke/Projects/start-spec-driving/tools/faker-mcp/dist/index.js"
+      ],
+      "timeout": 30000,
+      "trust": true,
+      "description": "Faker data generator"
+    }
+  },
+  "mcp": {
+    "allowed": [
+      "context7",
+      "faker"
+    ]
+  },
+  "$version": 2
+}

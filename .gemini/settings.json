@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "faker": {
+      "command": "node",
+      "args": ["/home/mhenke/Projects/start-spec-driving/tools/faker-mcp/dist/index.js"],
+      "cwd": "tools/faker-mcp",
+      "trust": true,
+      "description": "Faker data generator"
+    }
+  }
+}
