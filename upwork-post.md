@@ -31,6 +31,7 @@ This relationship is the foundation of the system and must be handled cleanly.
 ## Functional Requirements
 
 ### 1) Public Campaign Listing (index page)
+
 - Grid/list of active campaigns
 - Display: image, brand, model, monthly price, campaign type
 - Button: "View details"
@@ -38,6 +39,7 @@ This relationship is the foundation of the system and must be handled cleanly.
 - Norwegian UI and currency formatting
 
 ### 2) Campaign Detail Page
+
 - A dedicated page per campaign:
   - Displays full campaign details:
     - title, brand, model, price, downpayment, duration, km/year, validity dates, source URL, image, verified status
@@ -47,11 +49,13 @@ This relationship is the foundation of the system and must be handled cleanly.
   - Show confirmation message
 
 ### 3) Admin – Campaign Management (CRUD)
+
 - Create, edit, delete campaigns
 - Simple table/list view
 - Confirmation before delete
 
 ### 4) Admin – Lead Overview
+
 - Table of leads
 - Columns: name, email, phone, campaign title, timestamp
 - Sorted by newest first
@@ -59,30 +63,32 @@ This relationship is the foundation of the system and must be handled cleanly.
 ## Data Model (Critical)
 
 ### Campaign
-| Field | Type | Description |
-|-------|------|-------------|
-| title | string | Campaign title |
-| brand | string | Car brand |
-| model | string | Car model |
-| monthly_price | number | Monthly leasing price |
-| downpayment | number | Down payment amount |
-| duration_months | number | Duration in months |
-| km_per_year | number | Kilometers per year |
-| campaign_type | enum | Private / Business |
-| verified | boolean | Verification status |
-| valid_from | date | Valid from date |
-| valid_to | date | Valid to date |
-| source_url | string | Source URL |
-| image | image | Campaign image |
+
+| Field           | Type    | Description           |
+| --------------- | ------- | --------------------- |
+| title           | string  | Campaign title        |
+| brand           | string  | Car brand             |
+| model           | string  | Car model             |
+| monthly_price   | number  | Monthly leasing price |
+| downpayment     | number  | Down payment amount   |
+| duration_months | number  | Duration in months    |
+| km_per_year     | number  | Kilometers per year   |
+| campaign_type   | enum    | Private / Business    |
+| verified        | boolean | Verification status   |
+| valid_from      | date    | Valid from date       |
+| valid_to        | date    | Valid to date         |
+| source_url      | string  | Source URL            |
+| image           | image   | Campaign image        |
 
 ### Lead
-| Field | Type | Description |
-|-------|------|-------------|
-| name | string | Lead name |
-| email | string | Lead email |
-| phone | string | Lead phone |
+
+| Field       | Type        | Description           |
+| ----------- | ----------- | --------------------- |
+| name        | string      | Lead name             |
+| email       | string      | Lead email            |
+| phone       | string      | Lead phone            |
 | campaign_id | foreign key | Reference to Campaign |
-| created_at | date | Creation timestamp |
+| created_at  | date        | Creation timestamp    |
 
 ## Technical Expectations
 
@@ -117,4 +123,3 @@ This relationship is the foundation of the system and must be handled cleanly.
 - Confirmation you can deliver UI in Norwegian
 
 > This is intended to become a real product, so quality of structure is more important than speed hacks.
-

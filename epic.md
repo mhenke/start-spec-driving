@@ -10,9 +10,9 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 ## 2. Technical Stack
 
-* **Frontend:** Next.js (App Router) for SEO and clean routing.
-* **Backend/DB:** Supabase (PostgreSQL) for relational integrity.
-* **Tools:** **Faker MCP** (nb_NO) for seeding; **Context7 MCP** for tech spec updates.
+- **Frontend:** Next.js (App Router) for SEO and clean routing.
+- **Backend/DB:** Supabase (PostgreSQL) for relational integrity.
+- **Tools:** **Faker MCP** (nb_NO) for seeding; **Context7 MCP** for tech spec updates.
 
 ---
 
@@ -20,37 +20,37 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 ### A. The Campaign Entity
 
-*This entity stores the technical specifications and marketing details of the lease.*
+_This entity stores the technical specifications and marketing details of the lease._
 
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | UUID | Yes | Primary Key |
-| `title` | String | Yes | Campaign heading (e.g., "Gunstig leasing") |
-| `brand` | String | Yes | Car make (e.g., Audi, Tesla) |
-| `model` | String | Yes | Car model |
-| `monthly_price` | Number | Yes | Monthly cost in NOK |
-| `downpayment` | Number | Yes | Startleie / Forskuddsleie |
-| `duration_months` | Integer | Yes | Term length (e.g., 36) |
-| `km_per_year` | Integer | Yes | Mileage allowance (e.g., 10000) |
-| `campaign_type` | Enum | Yes | `Privat` or `Næring` |
-| `verified` | Boolean | Yes | UI visibility toggle |
-| `valid_from` | Date | Yes | Campaign start date |
-| `valid_to` | Date | Yes | Campaign end date |
-| `source_url` | String | No | Link to external source |
-| `image` | String | Yes | Image URL or storage path |
+| Field             | Type    | Required | Description                                |
+| ----------------- | ------- | -------- | ------------------------------------------ |
+| `id`              | UUID    | Yes      | Primary Key                                |
+| `title`           | String  | Yes      | Campaign heading (e.g., "Gunstig leasing") |
+| `brand`           | String  | Yes      | Car make (e.g., Audi, Tesla)               |
+| `model`           | String  | Yes      | Car model                                  |
+| `monthly_price`   | Number  | Yes      | Monthly cost in NOK                        |
+| `downpayment`     | Number  | Yes      | Startleie / Forskuddsleie                  |
+| `duration_months` | Integer | Yes      | Term length (e.g., 36)                     |
+| `km_per_year`     | Integer | Yes      | Mileage allowance (e.g., 10000)            |
+| `campaign_type`   | Enum    | Yes      | `Privat` or `Næring`                       |
+| `verified`        | Boolean | Yes      | UI visibility toggle                       |
+| `valid_from`      | Date    | Yes      | Campaign start date                        |
+| `valid_to`        | Date    | Yes      | Campaign end date                          |
+| `source_url`      | String  | No       | Link to external source                    |
+| `image`           | String  | Yes      | Image URL or storage path                  |
 
 ### B. The Lead Entity
 
-*This entity captures prospect information tied to a specific vehicle.*
+_This entity captures prospect information tied to a specific vehicle._
 
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | UUID | Yes | Primary Key |
-| `campaign_id` | UUID | Yes | **Foreign Key** to Campaign (Linkage) |
-| `name` | String | Yes | Prospect full name |
-| `email` | String | Yes | Validated contact email |
-| `phone` | String | Yes | Contact phone number |
-| `created_at` | Timestamp | Yes | Auto-generated timestamp |
+| Field         | Type      | Required | Description                           |
+| ------------- | --------- | -------- | ------------------------------------- |
+| `id`          | UUID      | Yes      | Primary Key                           |
+| `campaign_id` | UUID      | Yes      | **Foreign Key** to Campaign (Linkage) |
+| `name`        | String    | Yes      | Prospect full name                    |
+| `email`       | String    | Yes      | Validated contact email               |
+| `phone`       | String    | Yes      | Contact phone number                  |
+| `created_at`  | Timestamp | Yes      | Auto-generated timestamp              |
 
 ---
 
@@ -58,12 +58,12 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 I have audited the original file against this Epic to ensure no data points were missed:
 
-* [x] **Campaign Type:** Included as Enum (Private/Business).
-* [x] **Mileage/Duration:** Successfully split into `km_per_year` and `duration_months`.
-* [x] **Dates:** Both `valid_from` and `valid_to` included.
-* [x] **Admin Lead View:** Explicit requirement for "Campaign Title" and "Timestamp" sorting included.
-* [x] **UI Localization:** Verified for currency (NOK) and Norwegian labels.
-* [x] **Safety:** "Confirmation before delete" added to Admin CRUD.
+- [x] **Campaign Type:** Included as Enum (Private/Business).
+- [x] **Mileage/Duration:** Successfully split into `km_per_year` and `duration_months`.
+- [x] **Dates:** Both `valid_from` and `valid_to` included.
+- [x] **Admin Lead View:** Explicit requirement for "Campaign Title" and "Timestamp" sorting included.
+- [x] **UI Localization:** Verified for currency (NOK) and Norwegian labels.
+- [x] **Safety:** "Confirmation before delete" added to Admin CRUD.
 
 ---
 
@@ -89,9 +89,7 @@ A join-view showing who wants which car, sorted by the latest timestamp.
 
 ## 6. Definition of Done
 
-* [ ] Database schema prevents leads from existing without a parent campaign.
-* [ ] Admin routes are protected by authentication.
-* [ ] All numeric inputs for price/mileage are validated as positive integers.
-* [ ] The application passes a "Norwegian Fluency" check for all labels.
-
-
+- [ ] Database schema prevents leads from existing without a parent campaign.
+- [ ] Admin routes are protected by authentication.
+- [ ] All numeric inputs for price/mileage are validated as positive integers.
+- [ ] The application passes a "Norwegian Fluency" check for all labels.
