@@ -11,19 +11,14 @@
     },
     "faker": {
       "command": "node",
-      "args": [
-        "/home/mhenke/Projects/start-spec-driving/tools/faker-mcp/dist/index.js"
-      ],
+      "args": ["/home/mhenke/Projects/start-spec-driving/tools/faker-mcp/dist/index.js"],
       "timeout": 30000,
       "trust": true,
       "description": "Faker data generator"
     }
   },
   "mcp": {
-    "allowed": [
-      "context7",
-      "faker"
-    ]
+    "allowed": ["context7", "faker"]
   },
   "$version": 2
 }

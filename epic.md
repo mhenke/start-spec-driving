@@ -21,27 +21,27 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 ### A. The Campaign Entity
 
-_This entity stores the technical specifications and marketing details of the lease. 
+_This entity stores the technical specifications and marketing details of the lease.
 When a Campaign is deleted, all associated Leads are also deleted (CASCADE DELETE)._
 
-| Field             | Type      | Required | Description                                |
-| ----------------- | --------- | -------- | ------------------------------------------ |
-| `id`              | Integer   | Yes      | Primary Key (auto-increment)               |
-| `title`           | String    | Yes      | Campaign heading (e.g., "Gunstig leasing") |
-| `brand`           | String    | Yes      | Car make (e.g., Audi, Tesla)               |
-| `model`           | String    | Yes      | Car model                                  |
-| `monthly_price`   | Integer   | Yes      | Monthly cost in NOK (positive integer)     |
-| `downpayment`     | Integer   | Yes      | Startleie / Forskuddsleie (positive integer)|
-| `duration_months` | Integer   | Yes      | Term length (e.g., 36)                     |
-| `km_per_year`     | Integer   | Yes      | Mileage allowance (e.g., 10000)            |
-| `campaign_type`   | Enum      | Yes      | `Privat` or `Næring`                       |
-| `verified`        | Boolean   | Yes      | UI visibility toggle                       |
-| `valid_from`      | Date      | Yes      | Campaign start date                        |
-| `valid_to`        | Date      | Yes      | Campaign end date                          |
-| `created_at`      | Timestamp | Yes      | Auto-generated timestamp                   |
-| `updated_at`      | Timestamp | Yes      | Auto-generated timestamp                   |
-| `source_url`      | String    | No       | Link to external source                    |
-| `image`           | String    | Yes      | Image URL (publicly accessible)            |
+| Field             | Type      | Required | Description                                  |
+| ----------------- | --------- | -------- | -------------------------------------------- |
+| `id`              | Integer   | Yes      | Primary Key (auto-increment)                 |
+| `title`           | String    | Yes      | Campaign heading (e.g., "Gunstig leasing")   |
+| `brand`           | String    | Yes      | Car make (e.g., Audi, Tesla)                 |
+| `model`           | String    | Yes      | Car model                                    |
+| `monthly_price`   | Integer   | Yes      | Monthly cost in NOK (positive integer)       |
+| `downpayment`     | Integer   | Yes      | Startleie / Forskuddsleie (positive integer) |
+| `duration_months` | Integer   | Yes      | Term length (e.g., 36)                       |
+| `km_per_year`     | Integer   | Yes      | Mileage allowance (e.g., 10000)              |
+| `campaign_type`   | Enum      | Yes      | `Privat` or `Næring`                         |
+| `verified`        | Boolean   | Yes      | UI visibility toggle                         |
+| `valid_from`      | Date      | Yes      | Campaign start date                          |
+| `valid_to`        | Date      | Yes      | Campaign end date                            |
+| `created_at`      | Timestamp | Yes      | Auto-generated timestamp                     |
+| `updated_at`      | Timestamp | Yes      | Auto-generated timestamp                     |
+| `source_url`      | String    | No       | Link to external source                      |
+| `image`           | String    | Yes      | Image URL (publicly accessible)              |
 
 ### B. The Lead Entity
 
@@ -100,6 +100,7 @@ Campaign IDs are validated as positive integers in all route parameters.
 ## 7. Error Handling & Resilience
 
 The application implements comprehensive error handling:
+
 - Client-side validation with user-friendly error messages
 - Server-side validation with appropriate HTTP status codes
 - Error boundaries for graceful handling of unexpected failures
@@ -109,6 +110,7 @@ The application implements comprehensive error handling:
 ## 8. Data Migration Strategy
 
 The application uses Drizzle ORM's migration system for database schema evolution:
+
 - Version-controlled SQL migration files stored in `/drizzle/migrations`
 - Automated migration scripts for deployment environments
 - Rollback capabilities for failed migrations

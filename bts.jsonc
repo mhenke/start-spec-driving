@@ -11,8 +11,8 @@
 
 {
   "$schema": "https://r2.better-t-stack.dev/schema.json",
-  "version": "3.19.4",
-  "createdAt": "2026-02-06T16:52:28.994Z",
+  "version": "3.19.5",
+  "createdAt": "2026-02-06T20:14:35.386Z",
   "reproducibleCommand": "bun create better-t-stack@latest start-spec-driving --frontend tanstack-start --backend self --runtime none --database sqlite --orm drizzle --api trpc --auth none --payments none --addons none --examples none --db-setup none --web-deploy none --server-deploy none --git --package-manager bun --install",
   "database": "sqlite",
   "orm": "drizzle",
