@@ -13,7 +13,7 @@ I'm looking for an experienced full-stack developer to build a clean, scalable w
 
 This is **not a prototype or no-code experiment**. The goal is a properly structured, production-ready web app with a solid data model and maintainable architecture.
 
-The application UI must be in **Norwegian**.
+This is a Norwegian-language-first application, not an international platform. The entire user experience and UI must be in **Norwegian**.
 
 You are free to choose the tech stack (React / Next.js / Vue / Svelte + backend such as Node, Firebase, Supabase, etc.), as long as the architecture is sound and easy to extend.
 

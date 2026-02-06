@@ -6,7 +6,7 @@ This updated **Epic** ensures a 100% audit match against the original Upwork pos
 
 ## 1. Project Overview
 
-A production-ready web application for displaying car leasing campaigns and collecting user leads. The architecture prioritizes data integrity, ensuring every **Lead** is strictly associated with a **Campaign**. The entire user experience is localized for the Norwegian market.
+A production-ready web application for displaying car leasing campaigns and collecting user leads. The architecture prioritizes data integrity, ensuring every **Lead** is strictly associated with a **Campaign**. This is a Norwegian-language-first application. The entire user experience is designed exclusively for the Norwegian market and must be in Norwegian.
 
 ## 2. Technical Stack
 
@@ -71,7 +71,7 @@ I have audited the original file against this Epic to ensure no data points were
 
 ### 1) Public Grid
 
-Filters for `verified: true`. Displays car images, monthly price in NOK, and the "View Details" (Se detaljer) button.
+Filters for `verified: true`. Displays the car image, brand, model, monthly price in NOK, campaign type, and the "View Details" (Se detaljer) button.
 
 ### 2) Detailed View & Conversion
 
