@@ -10,8 +10,9 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 ## 2. Technical Stack
 
-- **Frontend:** Next.js (App Router) for SEO and clean routing.
-- **Backend/DB:** Supabase (PostgreSQL) for relational integrity.
+- **Frontend:** TanStack Start for modern routing and data fetching.
+- **Backend/DB:** Self-hosted with tRPC for type-safe API calls, SQLite for lightweight persistence.
+- **ORM:** Drizzle for type-safe database operations.
 - **Tools:** **Faker MCP** (nb_NO) for seeding; **Context7 MCP** for tech spec updates.
 
 ---
@@ -20,24 +21,27 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 ### A. The Campaign Entity
 
-_This entity stores the technical specifications and marketing details of the lease._
+_This entity stores the technical specifications and marketing details of the lease. 
+When a Campaign is deleted, all associated Leads are also deleted (CASCADE DELETE)._
 
-| Field             | Type    | Required | Description                                |
-| ----------------- | ------- | -------- | ------------------------------------------ |
-| `id`              | UUID    | Yes      | Primary Key                                |
-| `title`           | String  | Yes      | Campaign heading (e.g., "Gunstig leasing") |
-| `brand`           | String  | Yes      | Car make (e.g., Audi, Tesla)               |
-| `model`           | String  | Yes      | Car model                                  |
-| `monthly_price`   | Number  | Yes      | Monthly cost in NOK                        |
-| `downpayment`     | Number  | Yes      | Startleie / Forskuddsleie                  |
-| `duration_months` | Integer | Yes      | Term length (e.g., 36)                     |
-| `km_per_year`     | Integer | Yes      | Mileage allowance (e.g., 10000)            |
-| `campaign_type`   | Enum    | Yes      | `Privat` or `Næring`                       |
-| `verified`        | Boolean | Yes      | UI visibility toggle                       |
-| `valid_from`      | Date    | Yes      | Campaign start date                        |
-| `valid_to`        | Date    | Yes      | Campaign end date                          |
-| `source_url`      | String  | No       | Link to external source                    |
-| `image`           | String  | Yes      | Image URL or storage path                  |
+| Field             | Type      | Required | Description                                |
+| ----------------- | --------- | -------- | ------------------------------------------ |
+| `id`              | Integer   | Yes      | Primary Key (auto-increment)               |
+| `title`           | String    | Yes      | Campaign heading (e.g., "Gunstig leasing") |
+| `brand`           | String    | Yes      | Car make (e.g., Audi, Tesla)               |
+| `model`           | String    | Yes      | Car model                                  |
+| `monthly_price`   | Integer   | Yes      | Monthly cost in NOK (positive integer)     |
+| `downpayment`     | Integer   | Yes      | Startleie / Forskuddsleie (positive integer)|
+| `duration_months` | Integer   | Yes      | Term length (e.g., 36)                     |
+| `km_per_year`     | Integer   | Yes      | Mileage allowance (e.g., 10000)            |
+| `campaign_type`   | Enum      | Yes      | `Privat` or `Næring`                       |
+| `verified`        | Boolean   | Yes      | UI visibility toggle                       |
+| `valid_from`      | Date      | Yes      | Campaign start date                        |
+| `valid_to`        | Date      | Yes      | Campaign end date                          |
+| `created_at`      | Timestamp | Yes      | Auto-generated timestamp                   |
+| `updated_at`      | Timestamp | Yes      | Auto-generated timestamp                   |
+| `source_url`      | String    | No       | Link to external source                    |
+| `image`           | String    | Yes      | Image URL (publicly accessible)            |
 
 ### B. The Lead Entity
 
@@ -45,8 +49,8 @@ _This entity captures prospect information tied to a specific vehicle._
 
 | Field         | Type      | Required | Description                           |
 | ------------- | --------- | -------- | ------------------------------------- |
-| `id`          | UUID      | Yes      | Primary Key                           |
-| `campaign_id` | UUID      | Yes      | **Foreign Key** to Campaign (Linkage) |
+| `id`          | Integer   | Yes      | Primary Key (auto-increment)          |
+| `campaign_id` | Integer   | Yes      | **Foreign Key** to Campaign (Linkage) |
 | `name`        | String    | Yes      | Prospect full name                    |
 | `email`       | String    | Yes      | Validated contact email               |
 | `phone`       | String    | Yes      | Contact phone number                  |
@@ -76,6 +80,7 @@ Filters for `verified: true`. Displays the car image, brand, model, monthly pric
 ### 2) Detailed View & Conversion
 
 Shows all 13 campaign data points. Contains a lead form that validates name, email, and phone before creating a `campaign_id` association.
+Uses clean routing with URL slugs in the format `/campaign/:id` where `:id` is the campaign's unique identifier.
 
 ### 3) Admin Management
 
@@ -85,9 +90,31 @@ Secure CRUD for campaigns with a deletion guard.
 
 A join-view showing who wants which car, sorted by the latest timestamp.
 
+## 6. URL Routing & Validation
+
+The application implements clean routing with URL slugs in the format `/campaign/:id`.
+Campaign IDs are validated as positive integers in all route parameters.
+
 ---
 
-## 6. Definition of Done
+## 7. Error Handling & Resilience
+
+The application implements comprehensive error handling:
+- Client-side validation with user-friendly error messages
+- Server-side validation with appropriate HTTP status codes
+- Error boundaries for graceful handling of unexpected failures
+- Proper error logging for debugging and monitoring
+- Network error handling with retry mechanisms where appropriate
+
+## 8. Data Migration Strategy
+
+The application uses Drizzle ORM's migration system for database schema evolution:
+- Version-controlled SQL migration files stored in `/drizzle/migrations`
+- Automated migration scripts for deployment environments
+- Rollback capabilities for failed migrations
+- Seeding scripts for initial data population using Faker (nb_NO)
+
+## 9. Definition of Done
 
 - [ ] Database schema prevents leads from existing without a parent campaign.
 - [ ] Admin routes are protected by authentication.
