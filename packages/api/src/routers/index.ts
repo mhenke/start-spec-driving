@@ -7,8 +7,12 @@ export const appRouter = router({
     return "OK";
   }),
   dbHealthCheck: publicProcedure.query(async () => {
-    await db.run(sql`SELECT 1`);
-    return "OK";
+    try {
+      await db.run(sql`SELECT 1`);
+      return { status: "Connected" };
+    } catch (err) {
+      return { status: "Disconnected", error: String(err) };
+    }
   }),
 });
 export type AppRouter = typeof appRouter;
