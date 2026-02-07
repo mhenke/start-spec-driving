@@ -1,68 +1,81 @@
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { useTRPC } from "@/utils/trpc";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
 
-const TITLE_TEXT = `
- ██████╗ ███████╗████████╗████████╗███████╗██████╗
- ██╔══██╗██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
- ██████╔╝█████╗     ██║      ██║   █████╗  ██████╔╝
- ██╔══██╗██╔══╝     ██║      ██║   ██╔══╝  ██╔══██╗
- ██████╔╝███████╗   ██║      ██║   ███████╗██║  ██║
- ╚═════╝ ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝
-
- ████████╗    ███████╗████████╗ █████╗  ██████╗██╗  ██╗
- ╚══██╔══╝    ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
-    ██║       ███████╗   ██║   ███████║██║     █████╔╝
-    ██║       ╚════██║   ██║   ██╔══██║██║     ██╔═██╗
-    ██║       ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
-    ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
- `;
-
 function HomeComponent() {
   const trpc = useTRPC();
-  const healthCheck = useQuery(trpc.healthCheck.queryOptions());
-  const dbHealthCheck = useQuery(trpc.dbHealthCheck.queryOptions());
+  const campaigns = useQuery(trpc.campaigns.list.queryOptions());
+
+  if (campaigns.isLoading) {
+    return (
+      <div className="container mx-auto p-4 text-center">
+        Laster kampanjer...
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-2">
-      <pre className="overflow-x-auto font-mono text-sm">{TITLE_TEXT}</pre>
-      <div className="grid gap-6">
-        <section className="rounded-lg border p-4">
-          <h2 className="mb-2 font-medium">API Status</h2>
-          <div className="flex items-center gap-2">
-            <div
-              className={`h-2 w-2 rounded-full ${healthCheck.data ? "bg-green-500" : "bg-red-500"}`}
-            />
-            <span className="text-muted-foreground text-sm">
-              {healthCheck.isLoading
-                ? "Checking..."
-                : healthCheck.data
-                  ? "Connected"
-                  : "Disconnected"}
-            </span>
-          </div>
-        </section>
-        <section className="rounded-lg border p-4">
-          <h2 className="mb-2 font-medium">Database Status</h2>
-          <div className="flex items-center gap-2">
-            <div
-              className={`h-2 w-2 rounded-full ${dbHealthCheck.data ? "bg-green-500" : "bg-red-500"}`}
-            />
-            <span className="text-muted-foreground text-sm">
-              {dbHealthCheck.isLoading
-                ? "Checking..."
-                : dbHealthCheck.data
-                  ? "Connected"
-                  : "Disconnected"}
-            </span>
-          </div>
-        </section>
+    <div className="container mx-auto px-4 py-8">
+      <header className="mb-12 text-center">
+        <h1 className="mb-4 text-4xl font-bold">Gunstig leasing av elbil</h1>
+        <p className="text-muted-foreground text-lg">
+          Utforsk våre beste tilbud på populære elbilmodeller.
+        </p>
+      </header>
+
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {campaigns.data?.map((campaign) => (
+          <Card key={campaign.id} className="overflow-hidden">
+            <div className="aspect-video w-full overflow-hidden bg-muted">
+              <img
+                src={campaign.image}
+                alt={`${campaign.brand} ${campaign.model}`}
+                className="h-full w-full object-cover transition-transform hover:scale-105"
+              />
+            </div>
+            <CardHeader>
+              <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
+                {campaign.campaignType}
+              </div>
+              <CardTitle>
+                {campaign.brand} {campaign.model}
+              </CardTitle>
+              <CardDescription>{campaign.title}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-foreground">
+                fra {campaign.monthlyPrice.toLocaleString("nb-NO")} kr / mnd
+              </div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Innskudd: {campaign.downpayment.toLocaleString("nb-NO")} kr
+              </p>
+            </CardContent>
+            <CardFooter>
+              <Link
+                to="/campaigns/$id"
+                params={{ id: String(campaign.id) }}
+                className={cn(buttonVariants(), "w-full")}
+              >
+                Se detaljer
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
       </div>
+
+      {campaigns.data?.length === 0 && (
+        <div className="py-12 text-center">
+          <p className="text-muted-foreground">Ingen aktive kampanjer for øyeblikket.</p>
+        </div>
+      )}
     </div>
   );
 }
