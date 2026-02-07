@@ -13,6 +13,28 @@ export const Route = createFileRoute("/campaigns/$id")({
   component: CampaignDetailComponent,
 });
 
+function CampaignImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    return (
+      <div className={cn("flex flex-col items-center justify-center bg-muted text-muted-foreground", className)}>
+        <span className="text-sm font-medium">Bilde kommer snart</span>
+        <span className="text-xs">Coming Soon</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setError(true)}
+      className={className}
+    />
+  );
+}
+
 function CampaignDetailComponent() {
   const { id } = Route.useParams();
   const trpc = useTRPC();
@@ -54,7 +76,7 @@ function CampaignDetailComponent() {
       <div className="grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <div className="mb-6 aspect-video overflow-hidden rounded-xl bg-muted">
-            <img 
+            <CampaignImage 
               src={data.image} 
               alt={`${data.brand} ${data.model}`} 
               className="h-full w-full object-cover"

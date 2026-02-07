@@ -46,7 +46,7 @@ async function main() {
       verified: true,
       validFrom: new Date("2024-01-01"),
       validTo: new Date("2024-12-31"),
-      image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=1200",
     },
     {
       title: "Audi Q4 e-tron",
@@ -60,7 +60,7 @@ async function main() {
       verified: true,
       validFrom: new Date("2024-01-01"),
       validTo: new Date("2024-12-31"),
-      image: "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&q=80&w=1200",
     },
     {
       title: "Polestar 2 - Standard Range",
@@ -74,7 +74,7 @@ async function main() {
       verified: true,
       validFrom: new Date("2024-02-01"),
       validTo: new Date("2024-08-31"),
-      image: "https://images.unsplash.com/photo-1621360841013-c7683c659ec6?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1617719113567-c6b75f85e39c?auto=format&fit=crop&q=80&w=1200",
     },
     {
       title: "Volkswagen ID.4 Pro",
@@ -88,7 +88,7 @@ async function main() {
       verified: true,
       validFrom: new Date("2024-01-01"),
       validTo: new Date("2024-12-31"),
-      image: "https://images.unsplash.com/photo-1622760807800-47806f0e4726?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1200",
     },
   ];
 

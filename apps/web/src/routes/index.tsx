@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 
 import { useTRPC } from "@/utils/trpc";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,6 +10,28 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
+
+function CampaignImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    return (
+      <div className={cn("flex flex-col items-center justify-center bg-muted text-muted-foreground", className)}>
+        <span className="text-sm font-medium">Bilde kommer snart</span>
+        <span className="text-xs">Coming Soon</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setError(true)}
+      className={className}
+    />
+  );
+}
 
 function HomeComponent() {
   const trpc = useTRPC();
@@ -35,7 +58,7 @@ function HomeComponent() {
         {campaigns.data?.map((campaign) => (
           <Card key={campaign.id} className="overflow-hidden">
             <div className="aspect-video w-full overflow-hidden bg-muted">
-              <img
+              <CampaignImage
                 src={campaign.image}
                 alt={`${campaign.brand} ${campaign.model}`}
                 className="h-full w-full object-cover transition-transform hover:scale-105"
