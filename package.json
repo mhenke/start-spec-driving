@@ -38,6 +38,7 @@
   "devDependencies": {
     "@start-spec-driving/config": "workspace:*",
     "@types/node": "catalog:",
+    "faker-mcp-server": "https://github.com/funsjanssen/faker-mcp.git",
     "typescript": "catalog:"
   },
   "packageManager": "bun@1.3.0"
