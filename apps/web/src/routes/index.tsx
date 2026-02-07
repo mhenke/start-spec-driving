@@ -26,6 +26,7 @@ const TITLE_TEXT = `
 function HomeComponent() {
   const trpc = useTRPC();
   const healthCheck = useQuery(trpc.healthCheck.queryOptions());
+  const dbHealthCheck = useQuery(trpc.dbHealthCheck.queryOptions());
 
   return (
     <div className="container mx-auto max-w-3xl px-4 py-2">
@@ -41,6 +42,21 @@ function HomeComponent() {
               {healthCheck.isLoading
                 ? "Checking..."
                 : healthCheck.data
+                  ? "Connected"
+                  : "Disconnected"}
+            </span>
+          </div>
+        </section>
+        <section className="rounded-lg border p-4">
+          <h2 className="mb-2 font-medium">Database Status</h2>
+          <div className="flex items-center gap-2">
+            <div
+              className={`h-2 w-2 rounded-full ${dbHealthCheck.data ? "bg-green-500" : "bg-red-500"}`}
+            />
+            <span className="text-muted-foreground text-sm">
+              {dbHealthCheck.isLoading
+                ? "Checking..."
+                : dbHealthCheck.data
                   ? "Connected"
                   : "Disconnected"}
             </span>

@@ -47,4 +47,10 @@ coverage
 *.tgz
 .cache
 tmp
-temp
+temp# Local sqlite files
+local.db
+**/local.db
+**/local.db-wal
+**/local.db-shm
+# Generated route tree
+**/routeTree.gen.ts
