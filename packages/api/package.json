@@ -1,0 +1,25 @@
+{
+  "name": "@start-spec-driving/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@start-spec-driving/db": "workspace:*",
+    "@start-spec-driving/env": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@start-spec-driving/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

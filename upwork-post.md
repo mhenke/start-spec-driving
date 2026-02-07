@@ -124,6 +124,14 @@ This relationship is the foundation of the system and must be handled cleanly.
 
 > This is intended to become a real product, so quality of structure is more important than speed hacks.
 
+## Stack Generation Command
+
+The project was generated using the following command:
+
+```bash
+bun create better-t-stack @latest start-spec-driving --frontend tanstack-start --backend self --runtime none --api trpc --auth none --payments none --database sqlite --orm drizzle --db-setup none --package-manager bun --git --web-deploy none --server-deploy none --install --addons none --examples none
+```
+
 ## Selected Tech Stack
 
 Based on the requirements, the following stack has been chosen:
@@ -137,5 +145,6 @@ Based on the requirements, the following stack has been chosen:
 - **Authentication:** None initially - as specified in requirements
 - **Payments:** None initially - as specified in requirements
 - **Deployment:** None initially - as specified in requirements
+- **Monitoring:** Real-time API and Database connectivity status indicators - for operational visibility
 
 This stack provides a production-ready, scalable solution that meets all the functional requirements while maintaining clean architecture and data integrity.
