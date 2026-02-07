@@ -12,7 +12,7 @@ A production-ready web application for displaying car leasing campaigns and coll
 
 - **Frontend:** TanStack Start for modern routing and data fetching.
 - **Backend:** Self-hosted with tRPC for type-safe API calls.
-- **Database:** SQLite with Turso for lightweight persistence.
+- **Database:** SQLite for lightweight persistence.
 - **ORM:** Drizzle for type-safe database operations.
 - **Runtime:** Bun for fast JavaScript/TypeScript execution.
 - **Tools:** **Faker MCP** (nb_NO) for seeding; **Context7 MCP** for tech spec updates.

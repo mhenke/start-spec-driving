@@ -11,8 +11,6 @@
       "zod": "^4.1.13",
       "typescript": "^5",
       "@types/node": "^22.13.14",
-      "@libsql/client": "0.15.15",
-      "libsql": "0.5.22",
       "@trpc/server": "^11.7.2",
       "@trpc/client": "^11.7.2"
     }

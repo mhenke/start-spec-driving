@@ -138,7 +138,7 @@ Based on the requirements, the following stack has been chosen:
 
 - **Frontend Framework:** TanStack Start - for modern routing and data fetching capabilities
 - **Backend:** Self-hosted with tRPC - for type-safe API calls between frontend and backend
-- **Database:** SQLite with Turso - for lightweight, fast persistence with cloud capabilities
+- **Database:** SQLite - for lightweight, fast persistence
 - **ORM:** Drizzle - for type-safe database operations that prevent runtime errors
 - **Runtime:** Bun - for fast JavaScript/TypeScript execution and development
 - **Package Manager:** Bun - for faster dependency resolution and installation

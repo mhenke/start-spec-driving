@@ -10,7 +10,7 @@ This project was created with [Better-T-Stack](https://github.com/AmanVarshney01
 - **shadcn/ui** - Reusable UI components
 - **tRPC** - End-to-end type-safe APIs
 - **Drizzle** - TypeScript-first ORM
-- **SQLite/Turso** - Database engine
+- **SQLite** - Local database engine
 
 ## Getting Started
 

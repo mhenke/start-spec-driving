@@ -10,18 +10,17 @@
     }
   },
   "scripts": {
-    "db:local": "turso dev --db-file local.db",
+    "db:local": "echo \"Using local SQLite database\"",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio",
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
-    "@libsql/client": "catalog:",
     "@start-spec-driving/env": "workspace:*",
+    "better-sqlite3": "^11.1.2",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.1",
-    "libsql": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
