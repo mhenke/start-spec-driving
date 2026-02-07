@@ -30,10 +30,12 @@
   },
   "dependencies": {
     "@start-spec-driving/env": "workspace:*",
+    "better-sqlite3": "^12.6.2",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
     "@start-spec-driving/config": "workspace:*",
     "@types/node": "catalog:",
     "faker-mcp-server": "https://github.com/funsjanssen/faker-mcp.git",
