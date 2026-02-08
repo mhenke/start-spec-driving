@@ -118,8 +118,9 @@ Please analyze and audit the following details and generate a structured, concis
     - SERVER DEPLOY: (e.g., Docker, AWS)
     - AUTH: (e.g., Clerk, NextAuth)
     - PAYMENTS: (e.g., Stripe)
-    - Validation: (e.g., Zod)
-    - Styling: (e.g., Tailwind CSS, shadcn/ui)
+    - VALIDATION: (e.g., Zod)
+    - STYLING: (e.g., Tailwind CSS, shadcn/ui)
+    - MPC Servers: (e.g., Github, Context7, Faker)
 3. Architectural Patterns & Constraints: [List your preferred patterns, such as Clean Architecture, DDD, or specific repository patterns, and any 'Non-obvious' rules the AI must never violate].
 4. Coding Standards: [Specify naming conventions, linting preferences, or folder structure requirements].
 Output Requirements:
