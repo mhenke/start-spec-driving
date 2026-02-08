@@ -128,7 +128,7 @@ Output Requirements:
 .
 • Focus on providing deterministic guidance to prevent AI hallucinations
 
-Please update the  @openspec/config.yaml
+Please update the  @openspec/config.yaml.  Do not guess or assume. If unknown, put  "Not Determined."
 ."
 ````
 
