@@ -100,7 +100,7 @@ This will create the necessary OpenSpec configuration files in the `openspec/` d
 Update the `openspec/config.yaml` file with your project context. You can use an AI tool to generate the appropriate context by providing it with the following prompt:
 
 ````
-I am setting up a new project using OpenSpec v1.1+. I need to initialize the context field in my  @openspec/config.yamll file. Please review the existing @openspec/config.yaml for guidlines. This file must serve as the 'worldview' that guides all future AI agent actions.
+I am setting up a new project using OpenSpec v1.1+. I need to initialize the context field in my  @openspec/config.yamll file. Please review the existing @openspec/config.yaml for guidlines. This file must serve as the 'worldview' that guides all future AI agent actions. Don't assume. if unknown or unavailble put "N/A"'.
 
 Please analyze and audit the following details and generate a structured, concise YAML block for the context field:
 
@@ -128,7 +128,7 @@ Output Requirements:
 .
 • Focus on providing deterministic guidance to prevent AI hallucinations
 
-Please update the  @openspec/config.yaml
+Please update the  @openspec/config.yaml Don't assume or guess. This will be audited and needs to be correct.
 ."
 ````
 
