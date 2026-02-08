@@ -9,4 +9,11 @@ export default defineConfig({
   server: {
     port: 3001,
   },
+  resolve: {
+    dedupe: ["react", "react-dom"],
+  },
+  ssr: {
+    external: ["better-sqlite3"],
+    noExternal: [/^@start-spec-driving\//],
+  },
 });

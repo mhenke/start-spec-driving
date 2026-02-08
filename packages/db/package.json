@@ -18,12 +18,13 @@
   },
   "dependencies": {
     "@start-spec-driving/env": "workspace:*",
-    "better-sqlite3": "^11.1.2",
+    "better-sqlite3": "^12.6.2",
     "dotenv": "catalog:",
     "drizzle-orm": "^0.45.1",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
     "@start-spec-driving/config": "workspace:*",
     "drizzle-kit": "^0.31.8",
     "typescript": "catalog:"

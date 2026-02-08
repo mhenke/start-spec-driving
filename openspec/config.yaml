@@ -1,0 +1,58 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+
+context: |
+  System Overview & Domain:
+    Full-stack TypeScript web application built on the Better-T-Stack.
+    Features a TanStack Start frontend (React) and a Bun-based backend API (tRPC).
+    The system uses a local SQLite database with Drizzle ORM.
+    Domain: Web Application Template / Starter.
+
+  Technical Stack:
+    - WEB FRONTEND: TanStack Start, React, Tailwind CSS, shadcn/ui
+    - NATIVE FRONTEND: N/A
+    - BACKEND: Bun
+    - RUNTIME: Bun
+    - API: tRPC
+    - DATABASE: SQLite (better-sqlite3)
+    - ORM: Drizzle
+    - DB SETUP: Drizzle Kit (push, generate, migrate)
+    - WEB DEPLOY: N/A
+    - SERVER DEPLOY: Docker
+    - AUTH: N/A
+    - PAYMENTS: N/A
+    - VALIDATION: Zod
+    - STYLING: Tailwind CSS, shadcn/ui
+    - MPC Servers: Github, Context7, Faker
+
+  Architectural Patterns & Constraints:
+    - Monorepo (Bun Workspaces) with `apps/` and `packages/`
+    - Type-safe end-to-end communication via tRPC
+    - Schema-driven database development with Drizzle
+    - "Backend for Frontend" pattern
+    - Shared packages for API, DB, Env, Config
+    - Strict separation of concerns between API logic and UI components
+
+  Coding Standards:
+    - TypeScript Strict Mode enabled
+    - Prettier and ESLint for formatting and linting
+    - Functional components with Hooks for React
+    - Zod for runtime validation
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours

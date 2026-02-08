@@ -12,34 +12,44 @@ import Loader from "./components/loader";
 import { routeTree } from "./routeTree.gen";
 import { TRPCProvider } from "./utils/trpc";
 
-export const queryClient = new QueryClient({
-  queryCache: new QueryCache({
-    onError: (error, query) => {
-      toast.error(error.message, {
-        action: {
-          label: "retry",
-          onClick: query.invalidate,
-        },
-      });
-    },
-  }),
-  defaultOptions: { queries: { staleTime: 60 * 1000 } },
-});
-
-const trpcClient = createTRPCClient<AppRouter>({
-  links: [
-    httpBatchLink({
-      url: "/api/trpc",
-    }),
-  ],
-});
-
-const trpc = createTRPCOptionsProxy({
-  client: trpcClient,
-  queryClient: queryClient,
-});
+function getBaseUrl() {
+  if (typeof window !== "undefined") {
+    // Browser should use relative path
+    return "";
+  }
+  // SSR should use localhost
+  // @ts-ignore
+  return `http://localhost:${process.env.PORT ?? 3001}`;
+}
 
 export const getRouter = () => {
+  const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+      onError: (error, query) => {
+        toast.error(error.message, {
+          action: {
+            label: "retry",
+            onClick: query.invalidate,
+          },
+        });
+      },
+    }),
+    defaultOptions: { queries: { staleTime: 60 * 1000 } },
+  });
+
+  const trpcClient = createTRPCClient<AppRouter>({
+    links: [
+      httpBatchLink({
+        url: `${getBaseUrl()}/api/trpc`,
+      }),
+    ],
+  });
+
+  const trpc = createTRPCOptionsProxy({
+    client: trpcClient,
+    queryClient: queryClient,
+  });
+
   const router = createTanStackRouter({
     routeTree,
     scrollRestoration: true,
