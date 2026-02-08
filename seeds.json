@@ -1,0 +1,121 @@
+{
+  "campaigns": [
+    {
+      "id": 1,
+      "title": "Gunstig privatleasing av Audi Q4 e-tron",
+      "brand": "Audi",
+      "model": "Q4 e-tron 45",
+      "monthly_price": 4990,
+      "downpayment": 100000,
+      "duration_months": 36,
+      "km_per_year": 10000,
+      "campaign_type": "Privat",
+      "verified": true,
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-06-30",
+      "image": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": 2,
+      "title": "Tesla Model Y RWD - Klar for levering",
+      "brand": "Tesla",
+      "model": "Model Y RWD",
+      "monthly_price": 3990,
+      "downpayment": 80000,
+      "duration_months": 36,
+      "km_per_year": 15000,
+      "campaign_type": "Privat",
+      "verified": true,
+      "valid_from": "2026-02-01",
+      "valid_to": "2026-12-31",
+      "image": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": 3,
+      "title": "Næringsleasing Volkswagen ID.4 Pro",
+      "brand": "Volkswagen",
+      "model": "ID.4 Pro Highline",
+      "monthly_price": 5490,
+      "downpayment": 50000,
+      "duration_months": 48,
+      "km_per_year": 20000,
+      "campaign_type": "Næring",
+      "verified": true,
+      "valid_from": "2026-01-15",
+      "valid_to": "2026-05-15",
+      "image": "https://images.unsplash.com/photo-1621932953986-15fcf084da0f?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": 4,
+      "title": "BMW i4 eDrive40 M-Sport kampanje",
+      "brand": "BMW",
+      "model": "i4 eDrive40",
+      "monthly_price": 6290,
+      "downpayment": 120000,
+      "duration_months": 36,
+      "km_per_year": 10000,
+      "campaign_type": "Privat",
+      "verified": true,
+      "valid_from": "2026-02-08",
+      "valid_to": "2026-08-08",
+      "image": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+      "id": 5,
+      "title": "Volvo EX30 - Kompakt og elektrisk",
+      "brand": "Volvo",
+      "model": "EX30 Single Motor",
+      "monthly_price": 3290,
+      "downpayment": 60000,
+      "duration_months": 36,
+      "km_per_year": 10000,
+      "campaign_type": "Privat",
+      "verified": true,
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "image": "https://images.unsplash.com/photo-1695642616628-922af7610444?auto=format&fit=crop&q=80&w=800"
+    }
+  ],
+  "leads": [
+    {
+      "id": 1,
+      "campaign_id": 1,
+      "name": "Ola Nordmann",
+      "email": "ola.nordmann@example.no",
+      "phone": "98765432",
+      "created_at": "2026-02-08T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "campaign_id": 2,
+      "name": "Kari Nordmann",
+      "email": "kari.nordmann@example.no",
+      "phone": "87654321",
+      "created_at": "2026-02-08T11:30:00Z"
+    },
+    {
+      "id": 3,
+      "campaign_id": 1,
+      "name": "Per Hansen",
+      "email": "per.hansen@mail.no",
+      "phone": "45678912",
+      "created_at": "2026-02-08T12:15:00Z"
+    },
+    {
+      "id": 4,
+      "campaign_id": 3,
+      "name": "Espen Askeladd",
+      "email": "espen@eventyr.no",
+      "phone": "12345678",
+      "created_at": "2026-02-08T14:45:00Z"
+    },
+    {
+      "id": 5,
+      "campaign_id": 5,
+      "name": "Berit Jensen",
+      "email": "berit.jensen@online.no",
+      "phone": "90123456",
+      "created_at": "2026-02-08T15:20:00Z"
+    }
+  ]
+}

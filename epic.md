@@ -15,7 +15,7 @@ A production-ready web application for displaying car leasing campaigns and coll
 - **Database:** SQLite for lightweight persistence.
 - **ORM:** Drizzle for type-safe database operations.
 - **Runtime:** Bun for fast JavaScript/TypeScript execution.
-- **Tools:** **Faker MCP** (nb_NO) for seeding; **Context7 MCP** for tech spec updates.
+- **Tools:** **Faker MCP** (nb_NO - confirmed supported) for seeding; **Context7 MCP** for tech spec updates.
 - **Monitoring:** Real-time API and Database connectivity status indicators.
 
 ---
