@@ -23,6 +23,19 @@ if (process.env.DATABASE_URL?.startsWith("file:.")) {
 
 ---
 
+## 2. SQLite Driver Compatibility (Bun vs. Node)
+
+### Issue
+The project initially used `better-sqlite3`. 
+- **In Bun**: Running scripts with `bun` caused a native module ABI mismatch (`NODE_MODULE_VERSION` conflict).
+- **In Node (Vite/TanStack Start)**: Attempting to switch to `bun:sqlite` caused `ERR_UNSUPPORTED_ESM_URL_SCHEME` because Node.js does not support the `bun:` scheme.
+
+### Solution
+- **Main App**: Reverted `packages/db/src/index.ts` to use `better-sqlite3` to maintain compatibility with the Node.js runtime used by the Vite dev server.
+- **Seed Script**: Updated `packages/db/src/seed.ts` to use `bun:sqlite` directly when run with Bun, bypassing the `better-sqlite3` ABI issues without affecting the main application.
+
+---
+
 ## 3. "asChild" Prop Warning on Button Component
 
 ### Issue
@@ -43,4 +56,31 @@ Instead of wrapping elements in a `<Button asChild>` component, use the `buttonV
 <Link to="..." className={cn(buttonVariants())}>Text</Link>
 ```
 
+---
 
+## 4. Package Exports (@start-spec-driving/db/schema)
+
+### Issue
+Vite failed to resolve the subpath import `@start-spec-driving/db/schema` because the `exports` field in `packages/db/package.json` used a wildcard (`./*`) that pointed to files directly in `src/`, whereas the schema was located in a subdirectory (`src/schema/index.ts`).
+
+### Solution
+Explicitly added the `/schema` export to `packages/db/package.json`.
+
+```json
+"exports": {
+  ".": { "default": "./src/index.ts" },
+  "./schema": { "default": "./src/schema/index.ts" },
+  "./*": { "default": "./src/*.ts" }
+}
+```
+
+---
+
+## 5. Image Loading (NS_BINDING_ABORTED)
+
+### Issue
+Browser errors (`NS_BINDING_ABORTED`) occurred when trying to load images from certain external domains (e.g., Wikimedia Commons, Audi official site) likely due to CORS or hotlinking protections.
+
+### Solution
+- **Reliable Hosting**: Switched seed data to use Unsplash URLs, which are more resilient to hotlinking in development.
+- **Graceful Fallback**: Implemented a `CampaignImage` component with an `onError` handler that displays a "Bilde kommer snart / Coming Soon" placeholder if the image fails to load.
