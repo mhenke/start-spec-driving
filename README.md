@@ -100,7 +100,7 @@ This will create the necessary OpenSpec configuration files in the `openspec/` d
 Update the `openspec/config.yaml` file with your project context. You can use an AI tool to generate the appropriate context by providing it with the following prompt:
 
 ````
-I am setting up a new project using OpenSpec v1.1+. I need to initialize the context field in my  @openspec/config.yamll file. Please review the existing @openspec/config.yaml for guidlines. This file must serve as the 'worldview' that guides all future AI agent actions.
+I am setting up a new project using OpenSpec v1.1+. I need to initialize the context field in my  @openspec/config.yamll file. Please review the existing @openspec/config.yaml for guidlines and optional rule examples. This file must serve as the 'worldview' that guides all future AI agent actions. Don't assume. if unknown or unavailble put "N/A"'.
 
 Please analyze and audit the following details and generate a structured, concise YAML block for the context field:
 
@@ -118,8 +118,9 @@ Please analyze and audit the following details and generate a structured, concis
     - SERVER DEPLOY: (e.g., Docker, AWS)
     - AUTH: (e.g., Clerk, NextAuth)
     - PAYMENTS: (e.g., Stripe)
-    - Validation: (e.g., Zod)
-    - Styling: (e.g., Tailwind CSS, shadcn/ui)
+    - VALIDATION: (e.g., Zod)
+    - STYLING: (e.g., Tailwind CSS, shadcn/ui)
+    - MPC Servers: (e.g., Github, Context7, Faker)
 3. Architectural Patterns & Constraints: [List your preferred patterns, such as Clean Architecture, DDD, or specific repository patterns, and any 'Non-obvious' rules the AI must never violate].
 4. Coding Standards: [Specify naming conventions, linting preferences, or folder structure requirements].
 Output Requirements:
@@ -128,7 +129,7 @@ Output Requirements:
 .
 • Focus on providing deterministic guidance to prevent AI hallucinations
 
-Please update the  @openspec/config.yaml.  Do not guess or assume. If unknown, put  "Not Determined."
+Please update the  @openspec/config.yaml Don't assume or guess. This will be audited and needs to be correct.
 ."
 ````
 
