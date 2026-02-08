@@ -105,7 +105,21 @@ I am setting up a new project using OpenSpec v1.1+. I need to initialize the con
 Please analyze and audit the following details and generate a structured, concise YAML block for the context field:
 
 1. System Overview & Domain: [Describe what the system does and any core business rules or industry-specific logic].
-2. Technical Stack & Versions: [List your specific languages, frameworks, and libraries with versions, e.g., TypeScript 5.0, Next.js 14, Tailwind 3.0].
+2. Technical Stack & Versions: [Provide specific technologies and versions for the following]:
+    - WEB FRONTEND: (e.g., TanStack Start, React)
+    - NATIVE FRONTEND: (if applicable)
+    - BACKEND: (e.g., Node.js, Bun)
+    - RUNTIME: (e.g., Bun, Node.js)
+    - API: (e.g., tRPC)
+    - DATABASE: (e.g., SQLite)
+    - ORM: (e.g., Drizzle)
+    - DB SETUP: (e.g., migrations, seeding)
+    - WEB DEPLOY: (e.g., Vercel, Netlify)
+    - SERVER DEPLOY: (e.g., Docker, AWS)
+    - AUTH: (e.g., Clerk, NextAuth)
+    - PAYMENTS: (e.g., Stripe)
+    - Validation: (e.g., Zod)
+    - Styling: (e.g., Tailwind CSS, shadcn/ui)
 3. Architectural Patterns & Constraints: [List your preferred patterns, such as Clean Architecture, DDD, or specific repository patterns, and any 'Non-obvious' rules the AI must never violate].
 4. Coding Standards: [Specify naming conventions, linting preferences, or folder structure requirements].
 Output Requirements:
