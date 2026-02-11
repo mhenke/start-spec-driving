@@ -30,7 +30,13 @@ This project uses SQLite with Drizzle ORM.
 bun run db:local
 ```
 
-2. Update your `.env` file in the `apps/web` directory with the appropriate connection details if needed.
+2. Ensure your `.env` file in the `apps/web` directory has the correct DATABASE_URL:
+   
+```
+DATABASE_URL="file:../../packages/db/local.db"
+```
+
+⚠️ **Important**: This path is intentionally relative to the `apps/web` directory. Do not change this path as it's required for proper database connectivity.
 
 3. Apply the schema to your database:
 
