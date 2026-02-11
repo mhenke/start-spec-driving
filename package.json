@@ -1,0 +1,44 @@
+{
+  "name": "start-spec-driving",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "dotenv": "^17.2.2",
+      "zod": "^4.1.13",
+      "typescript": "^5",
+      "@types/node": "^22.13.14",
+      "@libsql/client": "0.15.15",
+      "libsql": "0.5.22",
+      "@trpc/server": "^11.7.2",
+      "@trpc/client": "^11.7.2"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "build": "bun run --filter '*' build",
+    "check-types": "bun run --filter '*' check-types",
+    "dev:native": "bun run --filter native dev",
+    "dev:web": "bun run --filter web dev",
+    "db:push": "bun run --filter @start-spec-driving/db db:push",
+    "db:studio": "bun run --filter @start-spec-driving/db db:studio",
+    "db:generate": "bun run --filter @start-spec-driving/db db:generate",
+    "db:migrate": "bun run --filter @start-spec-driving/db db:migrate",
+    "db:local": "bun run --filter @start-spec-driving/db db:local"
+  },
+  "dependencies": {
+    "@start-spec-driving/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@start-spec-driving/config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  },
+  "packageManager": "bun@1.3.0"
+}
