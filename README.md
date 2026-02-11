@@ -67,3 +67,73 @@ start-spec-driving/
 - `bun run db:migrate`: Run database migrations
 - `bun run db:studio`: Open database studio UI
 - `bun run db:local`: Start the local SQLite database
+
+## Prompt to create Openspec config.yaml
+
+```
+# Role
+You are a Principal Systems Architect specializing in OpenSpec v1.1+.
+
+# Task
+Initialize the `context:` field for an `@openspec/config.yaml` file. This field serves as the "worldview" for all future AI agent actions. You must be concise, deterministic, and strictly avoid hallucinations.
+
+# Instructions
+1. Analyze the input details provided.
+2. If a specific technical detail is unknown or unavailable, you **must** use "N/A".
+3. Format the result as a single, valid YAML string under the `context:` key.
+4. Maintain high token efficiency (aiming for under 50KB).
+5. Update the existing @openspec/config.yaml file with the new context, ensuring it remains valid YAML.
+
+---
+
+# Example (One-Shot)
+**Input:** 1. System: Simple Todo App. 
+2. Stack: React, Node, SQLite. 
+3. Patterns: Functional components. 
+4. Standards: Arrow functions. 
+5. Auth: N/A.
+
+**Output:**
+context: |
+  domain:
+    description: "Task management system for individual productivity."
+    rules: "Items must have a unique ID and timestamp."
+  tech_stack:
+    web_frontend: "React"
+    backend: "Node.js"
+    database: "SQLite"
+    auth: "N/A"
+  architecture:
+    pattern: "Functional programming; no class-based components."
+    env: "apps/web/.env"
+  standards:
+    coding: "ES6 arrow functions exclusively for components."
+
+---
+
+# Target Task
+**Input:**
+1. **System Overview & Domain:** [Insert Description]
+2. **Technical Stack & Versions:**
+    - WEB FRONTEND: [Insert]
+    - NATIVE FRONTEND: [Insert]
+    - BACKEND: [Insert]
+    - RUNTIME: [Insert]
+    - API: [Insert]
+    - DATABASE: [Insert]
+    - ORM: [Insert]
+    - DB SETUP: [Insert]
+    - WEB DEPLOY: [Insert]
+    - SERVER DEPLOY: [Insert]
+    - AUTH: [Insert]
+    - PAYMENTS: [Insert]
+    - VALIDATION: [Insert]
+    - STYLING: [Insert]
+    - MPC SERVERS: [Insert]
+    - [Other Stack Items]: [Insert]
+3. **Architectural Patterns & Constraints:** [Insert Patterns/Rules]
+    - ENVIRONMENT: [Insert]
+4. **Coding Standards:** [Insert Conventions]
+```
+
+**Output:**
