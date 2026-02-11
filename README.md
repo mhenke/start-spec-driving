@@ -140,6 +140,6 @@ context: |
 3. **Architectural Patterns & Constraints:** [Insert Patterns/Rules]
     - ENVIRONMENT: [Insert]
 4. **Coding Standards:** [Insert Conventions]
-```
 
 **Output:**
+```
