@@ -1,0 +1,37 @@
+schema: spec-driven
+
+context: |
+  domain:
+    description: "Norwegian car leasing and lead management system. Production-ready platform for displaying leasing campaigns and collecting associated user leads."
+    rules: "UI and currency (NOK) must be exclusively in Norwegian. Leads must have a strict 1:1 association with a Campaign (CASCADE DELETE)."
+  tech_stack:
+    web_frontend: "TanStack Start (React 19, Vite, Tailwind CSS 4, Shadcn UI)"
+    native_frontend: "N/A"
+    backend: "Node.js (Bun) with tRPC"
+    runtime: "Bun"
+    api: "tRPC (Type-safe API)"
+    database: "SQLite (LibSQL/Turso)"
+    orm: "Drizzle ORM"
+    db_setup: "Turso CLI (db:local)"
+    validation: "Zod"
+    styling: "Tailwind CSS v4, Shadcn UI, Lucide React"
+    mpc_servers: "Faker MCP (nb_NO), Context7 MCP"
+    auth: "N/A"
+    payments: "N/A"
+    web_deploy: "N/A"
+    server_deploy: "N/A"
+  architecture:
+    pattern: "Monorepo with Bun Workspaces; Type-safe full-stack communication via tRPC; Schema-driven development with Drizzle."
+    env: "Type-safe environment variables via @t3-oss/env-core (packages/env)."
+  standards:
+    coding: "TypeScript; Functional React components; Schema validation with Zod; Conventional commits."
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
