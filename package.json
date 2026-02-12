@@ -36,6 +36,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
     "@start-spec-driving/config": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:"
