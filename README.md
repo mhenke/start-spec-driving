@@ -74,6 +74,57 @@ start-spec-driving/
 - `bun run db:studio`: Open database studio UI
 - `bun run db:local`: Start the local SQLite database
 
+## Common Issues & Patterns to Avoid
+
+### 1. Import Confusion
+- **Issue**: Using `useQuery` from `@tanstack/react-router` instead of `@tanstack/react-query`
+- **Solution**: Always import `useQuery` from `@tanstack/react-query` for data fetching operations
+- **Example**:
+  ```tsx
+  // ❌ Wrong
+  import { useQuery } from "@tanstack/react-router";
+  
+  // ✅ Correct
+  import { useQuery } from "@tanstack/react-query";
+  ```
+
+### 2. Route Parameter Access
+- **Issue**: Using `useParams({ from: "/some-route" })` with incorrect route paths
+- **Solution**: Use `Route.useParams()` for type-safe parameter access with correct route paths
+- **Example**:
+  ```tsx
+  // ❌ Wrong
+  const { id } = useParams({ from: "/campaign/$id" });
+  
+  // ✅ Correct
+  const { id } = Route.useParams();
+  ```
+
+### 3. tRPC Mutation Usage
+- **Issue**: Using deprecated mutation patterns like `trpc.someMutation.mutate(...)`
+- **Solution**: Use the new tRPC v11 pattern with `useMutation` and `mutationOptions()`
+- **Example**:
+  ```tsx
+  // ❌ Old pattern
+  trpc.campaign.createLead.mutate(data);
+  
+  // ✅ New pattern
+  const mutation = useMutation(trpc.campaign.createLead.mutationOptions());
+  mutation.mutateAsync(data);
+  ```
+
+### 4. Missing Dependencies
+- **Issue**: Packages importing from dependencies that aren't explicitly declared in package.json
+- **Solution**: Always ensure dependencies are explicitly declared in the package.json of the package that directly imports from them
+- **Example**:
+  ```json
+  {
+    "dependencies": {
+      "drizzle-orm": "^0.45.1"
+    }
+  }
+  ```
+
 ## Prompt to create Openspec config.yaml
 
 ```
