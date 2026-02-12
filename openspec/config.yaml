@@ -18,3 +18,29 @@ schema: spec-driven
 #       - Always include a "Non-goals" section
 #     tasks:
 #       - Break tasks into chunks of max 2 hours
+
+context: |
+  domain:
+    description: "Norwegian car leasing & lead management system for displaying car leasing campaigns and collecting user leads tied to each campaign."
+    rules: "Every Lead must be strictly associated with a Campaign; when a Campaign is deleted, all associated Leads are also deleted (CASCADE DELETE); all numeric inputs for price/mileage are validated as positive integers; application is Norwegian-language-first with currency in NOK."
+  tech_stack:
+    web_frontend: "TanStack Start"
+    native_frontend: "N/A"
+    backend: "Self-hosted with tRPC"
+    runtime: "Bun"
+    api: "tRPC"
+    database: "SQLite"
+    orm: "Drizzle"
+    db_setup: "None (custom)"
+    web_deploy: "None"
+    server_deploy: "None"
+    auth: "None"
+    payments: "None"
+    validation: "Zod"
+    styling: "TailwindCSS + shadcn/ui"
+    mcp_servers: "Faker MCP (nb_NO), Context7 MCP"
+  architecture:
+    pattern: "Production-ready web application with clean architecture; data integrity prioritized; Campaign-Lead relationship with foreign key constraints; clean routing with /campaign/:id format; type-safe APIs with tRPC."
+    env: "apps/web/.env"
+  standards:
+    coding: "TypeScript exclusively; type-safe database operations with Drizzle ORM; Norwegian localization (UI and currency in NOK); clean routing patterns; responsive layouts."
