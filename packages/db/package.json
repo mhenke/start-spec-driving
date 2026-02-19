@@ -23,7 +23,7 @@
     "@libsql/client": "catalog:",
     "@start-spec-driving/env": "workspace:*",
     "dotenv": "catalog:",
-    "drizzle-orm": "^0.45.1",
+    "drizzle-orm": "catalog:",
     "libsql": "catalog:",
     "zod": "catalog:"
   },
