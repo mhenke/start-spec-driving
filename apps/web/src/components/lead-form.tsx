@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useTRPC } from "@/utils/trpc";
 
+import { ShieldCheck, Zap } from "lucide-react";
+
 interface LeadFormProps {
   campaignId: number;
 }
@@ -36,58 +38,98 @@ export function LeadForm({ campaignId }: LeadFormProps) {
       setEmail("");
       setPhone("");
     } catch (error: any) {
-      // trpc/zod errors are handled by the global error handler or can be extracted here
       const message = error.shape?.message || "Noe gikk galt. Vennligst prøv igjen senere.";
       toast.error(message);
     }
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Interessert i denne bilen?</CardTitle>
-        <CardDescription>
-          Fyll ut skjemaet under, så tar en av våre rådgivere kontakt med deg.
+    <Card className="sticky top-8 border-none shadow-lg">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-2xl font-extrabold tracking-tight">
+          Interessert i denne bilen?
+        </CardTitle>
+        <CardDescription className="text-sm">
+          Fyll ut skjemaet under, så kontakter en av våre rådgivere deg for et uforpliktende tilbud.
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Fullt navn</Label>
+            <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              Navn
+            </Label>
             <Input
               id="name"
-              placeholder="Ola Nordmann"
+              placeholder="Ditt fulle navn"
               required
+              className="h-12"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">E-postadresse</Label>
+            <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              E-post
+            </Label>
             <Input
               id="email"
               type="email"
-              placeholder="ola@eksempel.no"
+              placeholder="navn@eksempel.no"
               required
+              className="h-12"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Telefonnummer</Label>
+            <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              Telefon
+            </Label>
             <Input
               id="phone"
               type="tel"
-              placeholder="99 00 11 22"
+              placeholder="8 siffre"
               required
+              className="h-12"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
-          <Button type="submit" className="w-full" disabled={submitMutation.isPending}>
-            {submitMutation.isPending ? "Sender..." : "Søk nå"}
+          <Button type="submit" className="h-12 w-full text-base font-bold" disabled={submitMutation.isPending}>
+            {submitMutation.isPending ? "Sender..." : "Send forespørsel"}
           </Button>
+          <p className="text-center text-[10px] text-muted-foreground">
+            Ved å sende forespørselen godtar du at vi behandler dine personopplysninger i henhold til våre personvernsvilkår.
+          </p>
         </form>
+
+        <div className="space-y-3 pt-2">
+          <div className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-primary">
+              <ShieldCheck className="h-5 w-5" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-bold">Trygg handel</span>
+              <span className="text-[10px] text-muted-foreground">Autorisert bilforhandler</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-50 text-green-600">
+              <Zap className="h-5 w-5" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-bold">Rask levering</span>
+              <span className="text-[10px] text-muted-foreground">Bilen står på lager nå</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-2 text-center">
+          <p className="text-[11px] font-medium text-muted-foreground">
+            Har du spørsmål? <a href="tel:22110000" className="text-primary hover:underline">Ring oss på 22 11 00 00</a>
+          </p>
+        </div>
       </CardContent>
     </Card>
   );
